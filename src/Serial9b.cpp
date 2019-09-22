@@ -2,6 +2,26 @@
 #include "Serial9b.h"
 #include "Serial9b_private.h"
 
+HardwareSerial9b::HardwareSerial9b(
+    volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
+    volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+    volatile uint8_t *ucsrc, volatile uint8_t *udr)
+    : HardwareSerial(ubrrh, ubrrl, ucsra, ucsrb, ucsrc, udr)
+{ }
+
+HardwareSerial9b::HardwareSerial9b(const HardwareSerial& ser)
+    : HardwareSerial(
+        0,0,0,0,0,0
+        // TODO: This seems to crash the MCU?
+        // static_cast<HardwareSerial9b>(ser)._ubrrh,
+        // static_cast<HardwareSerial9b>(ser)._ubrrl,
+        // static_cast<HardwareSerial9b>(ser)._ucsra,
+        // static_cast<HardwareSerial9b>(ser)._ucsrb,
+        // static_cast<HardwareSerial9b>(ser)._ucsrc,
+        // static_cast<HardwareSerial9b>(ser)._udr
+    )
+{ }
+
 void HardwareSerial9b::begin(unsigned long baud)
 {
     HardwareSerial::begin(baud);

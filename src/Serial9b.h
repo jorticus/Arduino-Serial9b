@@ -50,25 +50,25 @@ public:
 class HardwareSerial9b : public HardwareSerial //public ISerial9b//, public Stream
 {
 public:
-    inline HardwareSerial9b(
+    HardwareSerial9b(
         volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
         volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
-        volatile uint8_t *ucsrc, volatile uint8_t *udr)
-         : HardwareSerial(ubrrh, ubrrl, ucsra, ucsrb, ucsrc, udr)
-    { }
+        volatile uint8_t *ucsrc, volatile uint8_t *udr);
+        // : HardwareSerial(ubrrh, ubrrl, ucsra, ucsrb, ucsrc, udr)
+    //{ }
 
-    inline HardwareSerial9b(const HardwareSerial& ser)
-        : HardwareSerial(
-            0,0,0,0,0,0
-            // TODO: This seems to crash the MCU?
-            // static_cast<HardwareSerial9b>(ser)._ubrrh,
-            // static_cast<HardwareSerial9b>(ser)._ubrrl,
-            // static_cast<HardwareSerial9b>(ser)._ucsra,
-            // static_cast<HardwareSerial9b>(ser)._ucsrb,
-            // static_cast<HardwareSerial9b>(ser)._ucsrc,
-            // static_cast<HardwareSerial9b>(ser)._udr
-        )
-    { }
+    HardwareSerial9b(const HardwareSerial& ser);
+    //     : HardwareSerial(
+    //         0,0,0,0,0,0
+    //         // TODO: This seems to crash the MCU?
+    //         // static_cast<HardwareSerial9b>(ser)._ubrrh,
+    //         // static_cast<HardwareSerial9b>(ser)._ubrrl,
+    //         // static_cast<HardwareSerial9b>(ser)._ucsra,
+    //         // static_cast<HardwareSerial9b>(ser)._ucsrb,
+    //         // static_cast<HardwareSerial9b>(ser)._ucsrc,
+    //         // static_cast<HardwareSerial9b>(ser)._udr
+    //     )
+    // { }
 
     void begin(unsigned long baud);
     void end();
@@ -92,10 +92,10 @@ protected:
 extern HardwareSerial9b Serial9b1;
 #endif
 #if defined(UBRR2H)
-//extern HardwareSerial9b Serial9b2;
+extern HardwareSerial9b Serial9b2;
 #endif
 #if defined(UBRR3H)
-//extern HardwareSerial9b Serial9b3;
+extern HardwareSerial9b Serial9b3;
 #endif
 
 #endif /* SERIAL9B_H */
