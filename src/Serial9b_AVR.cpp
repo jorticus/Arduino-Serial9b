@@ -1,3 +1,4 @@
+#if defined (__AVR__)
 
 #include "Serial9b.h"
 #include "Serial9b_private.h"
@@ -97,3 +98,4 @@ void HardwareSerial9b::_rx_complete_irq_9bit(void)
   };
 }
 
+#endif

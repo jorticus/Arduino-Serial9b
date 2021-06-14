@@ -17,6 +17,6 @@ Usage:
     void loop() {
         Serial9b1.write9b(0x1AA); // bit9 = 1
         Serial9b1.write9b(0x0AA); // bit9 = 0
-        Serial9b1.write9b(0xAA | BIT9); // bit9 = 1 (alternative method)
+        Serial9b1.write9b(0xAA | BIT8); // bit9 = 1 (alternative method)
         delay(10);
     }
